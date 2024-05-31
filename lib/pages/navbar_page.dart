@@ -54,6 +54,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
           onTabChange: (value) {
             setState(() {
               _controller.index = value;
+              FocusManager.instance.primaryFocus?.unfocus();
             });
           },
         ),

@@ -44,76 +44,82 @@ class _TaspeehPageState extends VisibilityAwareState<TaspeehPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return SafeArea(
-      child: Stack(
-        children: [
-          Positioned(
-            top: 60,
-            left: 0,
-            right: 0,
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                '${taspeeh[_index].count}',
-                style: const TextStyle(fontSize: 70),
-              ),
-            ),
-          ),
-          Positioned(
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("سبحتي", style: TextStyle(fontFamily: 'Amiri')),
+      ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 60,
+              left: 0,
+              right: 0,
               child: Align(
-                  child: CarouselSlider.builder(
-                      itemCount: taspeeh.length,
-                      itemBuilder: (context, index, realIndex) {
-                        return Card(
-                          child: Center(
-                            child: Text(
-                              taspeeh[index].zikr,
-                              style: const TextStyle(
-                                  fontSize: 40, fontFamily: 'Amiri'),
-                            ),
-                          ),
-                        );
-                      },
-                      options: CarouselOptions(
-                        enlargeCenterPage: true,
-                        height: 150,
-                        enlargeFactor: 0.3,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            _index = index;
-                          });
-                        },
-                      )))),
-          Positioned(
-            bottom: 60,
-            left: 0,
-            right: 0,
-            child: Align(
-              child: IconButton(
-                highlightColor: Theme.of(context).colorScheme.surface,
-                iconSize: 50,
-                onPressed: () {
-                  setState(() {
-                    taspeeh[_index].count++;
-                  });
-                },
-                icon: const Icon(Icons.back_hand_outlined),
+                alignment: Alignment.center,
+                child: Text(
+                  '${taspeeh[_index].count}',
+                  style: const TextStyle(fontSize: 70),
+                ),
               ),
             ),
-          ),
-          Positioned(
-              bottom: 40,
-              right: 10,
-              child: IconButton(
+            Positioned(
+                child: Align(
+                    child: CarouselSlider.builder(
+                        itemCount: taspeeh.length,
+                        itemBuilder: (context, index, realIndex) {
+                          return Card(
+                            child: Center(
+                              child: Text(
+                                taspeeh[index].zikr,
+                                style: const TextStyle(
+                                    fontSize: 40, fontFamily: 'Amiri'),
+                              ),
+                            ),
+                          );
+                        },
+                        options: CarouselOptions(
+                          enlargeCenterPage: true,
+                          height: 150,
+                          enlargeFactor: 0.3,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              _index = index;
+                            });
+                          },
+                        )))),
+            Positioned(
+              bottom: 60,
+              left: 0,
+              right: 0,
+              child: Align(
+                child: IconButton(
                   highlightColor: Theme.of(context).colorScheme.surface,
-                  iconSize: 30,
+                  iconSize: 50,
                   onPressed: () {
                     setState(() {
-                      taspeeh[_index].count = 0;
+                      taspeeh[_index].count++;
                     });
                   },
-                  icon: const Icon(Icons.restart_alt_rounded))),
-        ],
+                  icon: const Icon(Icons.back_hand_outlined),
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: 40,
+                right: 10,
+                child: IconButton(
+                    highlightColor: Theme.of(context).colorScheme.surface,
+                    iconSize: 30,
+                    onPressed: () {
+                      setState(() {
+                        taspeeh[_index].count = 0;
+                      });
+                    },
+                    icon: const Icon(Icons.restart_alt_rounded))),
+          ],
+        ),
       ),
     );
   }

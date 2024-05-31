@@ -39,13 +39,16 @@ class _AsmaaPageState extends State<AsmaaPage> {
   }
 
   Widget asmaaGrid(List<HolyName> holyNames) {
-    return GridView.builder(
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-        itemCount: holyNames.length,
-        itemBuilder: (context, index) {
-          return asmaaTile(holyNames[index]);
-        });
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3),
+          itemCount: holyNames.length,
+          itemBuilder: (context, index) {
+            return asmaaTile(holyNames[index]);
+          }),
+    );
   }
 
   Widget asmaaTile(HolyName holyName) {
@@ -53,6 +56,7 @@ class _AsmaaPageState extends State<AsmaaPage> {
       margin: const EdgeInsets.all(12),
       child: TextButton(
         style: TextButton.styleFrom(
+            overlayColor: const Color(0xff90a955),
             backgroundColor: const Color(0xff2d2d2d),
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(

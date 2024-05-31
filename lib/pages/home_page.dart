@@ -26,13 +26,15 @@ class _HomePageState extends State<HomePage>
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
           title: const Text("أذكاري", style: TextStyle(fontFamily: 'Amiri')),
           centerTitle: true,
-          backgroundColor: Theme.of(context).colorScheme.background,
         ),
-        body: mainAzkariPage(context),
+        body: GestureDetector(
+            onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: mainAzkariPage(context)),
       ),
     );
   }
@@ -102,7 +104,7 @@ class _HomePageState extends State<HomePage>
                               size: MediaQuery.of(context).size.width / 3.5,
                               color: isSabah()
                                   ? const Color(0xffEAE0D5)
-                                  : const Color(0xff702632),
+                                  : const Color(0xff90a955),
                             ),
                           ),
                           Positioned(
@@ -116,7 +118,7 @@ class _HomePageState extends State<HomePage>
                                   Icons.nightlight_round_rounded,
                                   size: MediaQuery.of(context).size.width / 3.5,
                                   color: isSabah()
-                                      ? const Color(0xff702632)
+                                      ? const Color(0xff90a955)
                                       : const Color(0xffEAE0D5),
                                 ),
                               ),
@@ -134,8 +136,7 @@ class _HomePageState extends State<HomePage>
             ),
             StickyHeader(
                 header: Container(
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.background),
+                  decoration: const BoxDecoration(color: Color(0xFF141414)),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   margin: const EdgeInsets.only(bottom: 20),
@@ -161,7 +162,7 @@ class _HomePageState extends State<HomePage>
                       });
                     },
                     hintText: "إبحث عن أذكار",
-                    elevation: const MaterialStatePropertyAll(3),
+                    elevation: const WidgetStatePropertyAll(3),
                   ),
                 ),
                 content: azkarListView(subjects)),
