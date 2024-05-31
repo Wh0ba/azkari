@@ -1,3 +1,4 @@
+import 'package:azkari/pages/asmaa_page.dart';
 import 'package:azkari/pages/home_page.dart';
 import 'package:azkari/pages/taspeeh_page.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = TabController(length: 2, vsync: this);
+    _controller = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -28,7 +29,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
             fontSize: 17,
           ),
           gap: 10,
-          tabMargin: const EdgeInsets.only(bottom: 10),
+          tabMargin: const EdgeInsets.only(bottom: 15, top: 10),
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           tabs: [
             GButton(
@@ -43,6 +44,12 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
               icon: Icons.timelapse,
               text: 'سبحتي',
             ),
+            GButton(
+              backgroundColor: Theme.of(context).colorScheme.surface,
+              padding: const EdgeInsets.all(10),
+              icon: Icons.menu_book_rounded,
+              text: 'الأسماء',
+            ),
           ],
           onTabChange: (value) {
             setState(() {
@@ -53,7 +60,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
         body: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _controller,
-          children: const [HomePage(), TaspeehPage()],
+          children: const [HomePage(), TaspeehPage(), AsmaaPage()],
         ));
   }
 }
