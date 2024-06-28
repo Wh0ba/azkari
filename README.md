@@ -14,11 +14,13 @@
 - **User-Friendly UI:** Beautiful and functional design that is easy to use.
 
 ## Screenshots
-
-<img src="./sh/main1.png" alt="Main Screen" width="200"/>
-<img src="./sh/azkar1.png" alt="Azkar" width="200"/>
-<img src="./sh/tas1.png" alt="Taspeeh" width="200"/>
-<img src="./sh/names1.png" alt="Names" width="200"/>
+<p float='left'>
+<img src="./assets/sh/main1.png" alt="Main Screen" width="200"/>
+<img src="./assets/sh/azkar1.png" alt="Azkar" width="200"/>
+<img src="./assets/sh/tas1.png" alt="Taspeeh" width="200"/>
+<img src="./assets/sh/names1.png" alt="Names" width="200"/>
+   
+</p>
 
 
 ## Installation
